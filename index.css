@@ -1,0 +1,40 @@
+body{
+        background: rgb(127, 117, 185);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    form{
+        width: 300px;
+    }
+    input{
+        border: none;
+    }
+    input, button{
+        padding: 8px;
+        margin-bottom: 10px;
+        width: -webkit-fill-available;
+    }
+    button{
+        cursor: pointer;
+        width: -webkit-fill-available;
+    }
+    button:active{
+        opacity: 0.8;
+    }
+    .clear{
+        background-color: transparent;
+        color:ghostwhite;
+        border: none;
+    }
+    .solid{
+        background:ghostwhite;
+        color: rgb(127, 117, 185);
+        border: none;
+    }
+    .outline{
+        background: transparent;
+        color:ghostwhite;
+        border: 1px solid ghostwhite;
+    }
