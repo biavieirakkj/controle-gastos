@@ -1,5 +1,5 @@
 body{
-    background: rgb(127, 117, 185);
+    background:darkslateblue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@ button[disabled] {
     }
 .solid{
     background:ghostwhite;
-    color: rgb(127, 117, 185);
+    color:darkslateblue;
     border: none;
     }
 .outline{
@@ -41,3 +41,9 @@ button[disabled] {
     color:ghostwhite;
     border: 1px solid ghostwhite;
     }
+.error
+{
+    color:ghostwhite;
+    background:crimson;
+    display: none;
+}
