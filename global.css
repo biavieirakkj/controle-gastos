@@ -1,0 +1,27 @@
+.clear{
+    background-color: transparent;
+    color:ghostwhite;
+    border: none;
+}
+.solid{
+    background:ghostwhite;
+    color:darkslateblue;
+    border: none;
+}
+.outline{
+    background: transparent;
+    color:ghostwhite;
+    border: 1px solid ghostwhite;
+}
+.error
+{
+    color:ghostwhite;
+    background:crimson;
+    display: none;
+}
+button:active{
+    opacity: 0.8;
+}
+button[disabled] {
+    opacity: 0.7;
+}

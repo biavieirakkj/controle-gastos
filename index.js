@@ -11,9 +11,20 @@
         toggleButtonsDisable();
     }
 
+    function login()
+    {
+        window.location.href = "home.html";
+    }
+
+    function register()
+    {
+        window.location.href = "register.html"
+    }
+
     function isEmailValid()
     {
         const email = form.email().value;
+
         if (!email)
         {
             return false;
@@ -24,56 +35,36 @@
     function toggleEmailErrors()
     {
         const email = form.email().value;
-        if(!email)
-        {
-            form.emailRequiredError().style.display = "block";
-        } else {
-            form.emailRequiredError().style.display = "none";
-        }
 
-        if(validateEmail(email))
-        {
-            form.emailInvalidError().style.display = "none";
-        } else {
-            document.getElementById('email-invalid-error').style.display = "block";
-        }
-
+        form.emailRequiredError().style.display = email ? "none" : "block";
+        form.emailInvalidError().style.display = validateEmail(email) ? "none" : "block";
     }
 
     function togglePassWordErrors()
     {
         const password = form.password().value;
 
-        if(!password)
-        {
-            document.getElementById('password-required-error').style.display = "block";
-        } else {
-            document.getElementById('password-required-error').style.display = "none";
-        }
+        form.passwordRequiredError().style.display = password ? "none" : "block";
     }
 
     function toggleButtonsDisable()
     {
         const emailValid = isEmailValid();
-        document.getElementById('recover-password-button').disabled = !emailValid;
-
         const passwordValid = isPasswordValid();
-        document.getElementById('login-button').disabled = !emailValid || !passwordValid;
+
+        form.recoverPassword().disabled = !emailValid;
+        form.loginButtom().disabled = !emailValid || !passwordValid;
     }
 
     function isPasswordValid()
     {
         const password = form.password().value;
+
         if (!password)
         {
             return false;
         }
         return true;
-    }
-
-    function validateEmail(email)
-    {
-        return /\S+@\S+\.\S+/.test(email);
     }
 
     const form = { 

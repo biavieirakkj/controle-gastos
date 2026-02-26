@@ -8,14 +8,13 @@
 
 <body>
     <form>
-        <div>
+        <div class="form-field">
             <div><label>Email</label></div>
             <input type="email" name="email" id="email" oninput="onChangeEmail()" placeholder="seu@email.com"/>
             <div class="error" id="email-required-error">Email obrigatório</div>
             <div class="error" id="email-invalid-error">Email inválido</div>
-
         </div>
-        <div>
+        <div class="form-field">
             <div><label>Senha</label></div>
             <input type="password" name="password" id="password" oninput="onChangePassword()" placeholder="Senha"/>
             <div class="error" id="password-required-error">Senha obrigatória</div>
@@ -24,16 +23,18 @@
             <button type="button" class="clear" id="recover-password-button" disabled >Recuperar senha</button>
         </div>
         <div>
-            <button type="button" class="solid" id="login-button" disabled >Entrar</button>
+            <button type="button" class="solid" id="login-button" disabled onclick="login()">Entrar</button>
         </div>
         <div>
-            <button type="button" class="outline">Registrar</button>
+            <button type="button" class="outline" onclick="register()">Registrar</button>
         </div>
     </form>
 </body>
 
 <link rel="stylesheet" href="index.css" />
+<link rel="stylesheet" href="global.css" />
 
 <script src="index.js"></script>
+<script src="validations.js"></script>
 
 </html>
