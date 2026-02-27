@@ -13,13 +13,25 @@
 
     function login()
     {
+        showLoading();
         firebase.auth().signInWithEmailAndPassword(
             form.email().value, form.password().value
-        ).then(responde => {
-        window.location.href = "pages/home/home.html";
+        ).then(response => {
+            hideLoading();
+            window.location.href = "pages/home/home.html";
         }).catch(error => {
-            console.log('error', error)
+            hideLoading();
+            alert(getErrorMessage(error));
         });
+    }
+
+    function getErrorMessage(error)
+    {
+        if (error.code == "auth/invalid-credential")
+        {
+            return "Usuário não encontrado";
+        }
+        return error.message;
     }
 
     function register()
