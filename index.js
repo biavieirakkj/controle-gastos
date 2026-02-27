@@ -39,6 +39,12 @@
         window.location.href = "pages/register/register.html";
     }
 
+    function recoverPassword()
+    {
+        showLoading();
+        firebase.auth().sendPasswordResetEmail(form.email().value);
+    }
+
     function isEmailValid()
     {
         const email = form.email().value;
