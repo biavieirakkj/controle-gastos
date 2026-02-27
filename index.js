@@ -13,12 +13,18 @@
 
     function login()
     {
+        firebase.auth().signInWithEmailAndPassword(
+            form.email().value, form.password().value
+        ).then(responde => {
         window.location.href = "pages/home/home.html";
+        }).catch(error => {
+            console.log('error', error)
+        });
     }
 
     function register()
     {
-        window.location.href = "pages/register/register.html"
+        window.location.href = "pages/register/register.html";
     }
 
     function isEmailValid()

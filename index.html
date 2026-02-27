@@ -11,8 +11,8 @@
         <div class="form-field">
             <div><label>Email</label></div>
             <input type="email" name="email" id="email" oninput="onChangeEmail()" placeholder="seu@email.com"/>
-            <div class="error" id="email-required-error">Email obrigatório</div>
-            <div class="error" id="email-invalid-error">Email inválido</div>
+            <div class="error" id="email-required-error">Insira um e-mail</div>
+            <div class="error" id="email-invalid-error">Informe um e-mail válido</div>
         </div>
         <div class="form-field">
             <div><label>Senha</label></div>
@@ -36,5 +36,20 @@
 
 <script src="index.js"></script>
 <script src="validations.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCEqV4KTaD2ARWAZK7mPNUbnFSzn0DIoME",
+        authDomain: "controle-gastos-6b665.firebaseapp.com",
+        projectId: "controle-gastos-6b665",
+        storageBucket: "controle-gastos-6b665.firebasestorage.app",
+        messagingSenderId: "686121860516",
+        appId: "1:686121860516:web:b06b0c25a2de842da15531"
+    };
+     firebase.initializeApp(firebaseConfig);
+
+</script>
 
 </html>
