@@ -29,7 +29,7 @@
     {
         if (error.code == "auth/invalid-credential")
         {
-            return "Usuário não encontrado";
+            return "Usuário não encontrado ou senha incorreta";
         }
         return error.message;
     }
@@ -42,7 +42,13 @@
     function recoverPassword()
     {
         showLoading();
-        firebase.auth().sendPasswordResetEmail(form.email().value);
+        firebase.auth().sendPasswordResetEmail(form.email().value).then(() => {
+            hideLoading();   
+            alert('Email enviado com sucesso!');
+        }).catch(error => {
+            hideLoading();
+            alert(getErrorMessage(error));
+        });
     }
 
     function isEmailValid()
