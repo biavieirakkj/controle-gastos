@@ -11,7 +11,8 @@
         <div class="form-field">
             <div><label>Email</label></div>
             <input type="email" placeholder="seu@email.com" 
-                onchange="onChangeEmail()" id="email"/>
+                onchange="onChangeEmail()" 
+                id="email"/>
             <div class="error" id="email-required-error">
                 Insira um e-mail
             </div>
@@ -22,6 +23,7 @@
         <div class="form-field">
             <div><label>Senha</label></div>
             <input type="password" placeholder="Senha"
+                onchange="onChangePassword()"
                 id="password"/>
             <div class="error" id="password-required-error">
                 Insira uma Senha
@@ -33,13 +35,14 @@
         <div class="form-field">
             <div><label>Confirmar Senha</label></div>
             <input type="password" placeholder="Confirmar Senha"
+                onchange="onChangeConfirmPassword"
                 id="confirmPassword"/>
             <div class="error" id="password-doesnt-match-error">
                 Senha e Confirmar Senha devem ser iguais
             </div>
         </div>
         <div>
-            <button type="button" class="solid" disabled>
+            <button type="button" class="solid" disabled id="register-button">
                 Registrar
             </button>
         </div>
@@ -55,6 +58,7 @@
 <link rel="stylesheet" href="register.css" />
 
 <script src="register.js"></script>
+<script src="../../validations.js"></script>
 
 
 </html>
