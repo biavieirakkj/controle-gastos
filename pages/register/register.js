@@ -25,6 +25,19 @@ function onChangeConfirmPassword()
     toggleRegisterButtonDisable();
 }
 
+function register()
+{
+    showLoading();
+
+    const email = form.email().value;
+    const password = form.password().value;
+
+    firebase.auth().createUserWithEmailAndPassword(
+        email, password
+    ).then()
+
+}
+
 function validatePasswordMatch()
 {
     const password = form.password().value;
