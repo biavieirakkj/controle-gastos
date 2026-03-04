@@ -1,3 +1,20 @@
+     const form = { 
+        email: () => document.getElementById('email'),
+        emailInvalidError: () => document.getElementById('email-invalid-error'),
+        emailRequiredError: () => document.getElementById('email-required-error'),
+        loginButton: () => document.getElementById('login-button'),
+        password: () => document.getElementById('password'),
+        passwordRequiredError: () => document.getElementById('password-required-error'),
+        recoverPassword: () => document.getElementById('recover-password-button')
+    }
+    
+    firebase.auth().onAuthStateChanged(function(user) 
+    {
+        if (user) 
+        {
+            window.location.href = "pages/home/home.html";
+        }
+    })
 
     function onChangeEmail()
     {
@@ -7,15 +24,16 @@
 
     function onChangePassword()
     {
-        togglePassWordErrors();
         toggleButtonsDisable();
+        togglePassWordErrors();
     }
 
     function login()
     {
         showLoading();
         firebase.auth().signInWithEmailAndPassword(
-            form.email().value, form.password().value
+            form.email().value, 
+            form.password().value
         ).then(response => {
             hideLoading();
             window.location.href = "pages/home/home.html";
@@ -83,7 +101,7 @@
         const passwordValid = isPasswordValid();
 
         form.recoverPassword().disabled = !emailValid;
-        form.loginButtom().disabled = !emailValid || !passwordValid;
+        form.loginButton().disabled = !emailValid || !passwordValid;
     }
 
     function isPasswordValid()
@@ -97,12 +115,3 @@
         return true;
     }
 
-    const form = { 
-        email: () => document.getElementById('email'),
-        emailInvalidError: () => document.getElementById('email-invalid-error'),
-        emailRequiredError: () => document.getElementById('email-required-error'),
-        loginButtom: () => document.getElementById('login-button'),
-        password: () => document.getElementById('password'),
-        passwordRequiredError: () => document.getElementById('password-required-error'),
-        recoverPassword: () => document.getElementById('recover-password-button')
-    }
