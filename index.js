@@ -8,7 +8,7 @@
         recoverPassword: () => document.getElementById('recover-password-button')
     }
     
-    firebase.auth().onAuthStateChanged(function(user) 
+    firebase.auth().onAuthStateChanged (user =>
     {
         if (user) 
         {
