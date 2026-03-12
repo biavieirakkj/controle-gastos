@@ -9,3 +9,34 @@ header{
 header button{
     width: auto;
 }
+
+ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+ol li {
+    cursor: pointer;
+    background: lavenderblush;
+    padding: 8px 16px;
+    border-bottom: 1px solid black;
+
+}
+
+ol li:hover {
+/*feito para quando passar o mouse em cima, 
+mudar a cor do item */
+    opacity: 0.8;
+}
+
+ol li.expense {
+    border-left: 10px solid maroon;
+}
+
+ol li.income {
+    border-left: 10px solid greenyellow;
+}
+
+p {
+    margin: 4px 0;
+}
