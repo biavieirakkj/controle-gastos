@@ -1,6 +1,8 @@
-firebase.auth().onAuthStateChange(user => {
+firebase.auth().onAuthStateChanged(user => {
     if(user) 
     {
-        window.location.href = "../../index.html"
+        if (!window.location.pathname.includes("home.html")) {
+            window.location.href = "pages/home/home.html";
+        }
     }
-})
+});
