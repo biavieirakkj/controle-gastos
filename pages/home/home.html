@@ -6,6 +6,18 @@
     <title>Home - Controle de Gastos</title>
 
     <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../../global.css" />
+    <link rel="stylesheet" href="home.css" />
+
+
+    <script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
+    <script src="../../firebase-init.js"></script>
+    script src="../../auth-guard.js"></script>
+    <script src="../../loading.js"></script>
+    <script src="home.js"></script>
 </head>
 
 <body>
@@ -15,21 +27,7 @@
         </button>
     </header>
     <ol id="transactions"></ol>
-    <button class="fab fixed botton right">+</button>
+    <button class="fab fixed button right" onclick="newTransaction()">+</button>
 </body>
-
-<link rel="stylesheet" href="../../global.css" />
-<link rel="stylesheet" href="home.css" />
-
-
-<script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore-compat.js"></script>
-<script src="../../firebase-init.js"></script>
-<script src="../../auth-guard.js"></script>
-<script src="../../loading.js"></script>
-<script src="home.js"></script>
-
-
 
 </html>
