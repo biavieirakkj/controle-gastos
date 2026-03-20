@@ -3,6 +3,14 @@ body{
     background:darkslateblue;
 }
 
+header{
+    text-align: right;
+}
+
+header button{
+    width: auto;
+}
+
 .centralize{
     display: flex;
     justify-content: center;

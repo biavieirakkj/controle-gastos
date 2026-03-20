@@ -1,8 +1,6 @@
 firebase.auth().onAuthStateChanged(user => {
-    if(user) 
-    {
-        if (!window.location.pathname.includes("home.html")) {
-            window.location.href = "pages/home/home.html";
-        }
+    if (!user) {
+        // Se não tem usuário, manda para o login (index.html na raiz)
+        window.location.href = "../../index.html";
     }
-});
+})
