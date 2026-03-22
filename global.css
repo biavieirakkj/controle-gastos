@@ -61,9 +61,14 @@ header button{
 }
 
 input, 
-button{
+button,
+select{
     padding: 8px;
     width: -webkit-fill-available;
+}
+
+input[type="radio"]{
+    width: auto;
 }
 
 button:active{
