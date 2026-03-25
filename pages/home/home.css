@@ -17,9 +17,9 @@ ol {
 
 ol li {
     cursor: pointer;
-    background: lavenderblush;
+    background: rgb(241, 238, 239);
     padding: 8px 16px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(43, 37, 85);
 
 }
 
@@ -34,7 +34,7 @@ ol li.expense {
 }
 
 ol li.income {
-    border-left: 10px solid greenyellow;
+    border-left: 10px solid rgb(111, 145, 60);
 }
 
 p {

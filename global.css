@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    background:darkslateblue;
+    background:rgb(169, 162, 204);
 }
 
 header{
@@ -25,7 +25,7 @@ header button{
 
 .solid{
     background:ghostwhite;
-    color:darkslateblue;
+    color:rgb(43, 37, 85);
     border: none;
 }
 
@@ -37,8 +37,7 @@ header button{
 
 .error
 {
-    color:ghostwhite;
-    background:crimson;
+    color: maroon;
     display: none;
 }
 
