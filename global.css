@@ -35,6 +35,12 @@ header button{
     border: 1px solid ghostwhite;
 }
 
+.outline.danger 
+{
+    color: maroon;
+    border-color: maroon;
+}
+
 .error
 {
     color: maroon;

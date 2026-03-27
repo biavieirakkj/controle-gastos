@@ -29,7 +29,10 @@ function findTransactions(user)
         .get()
         .then(snapshot => {
             hideLoading();
-            const transactions = snapshot.docs.map(doc => doc.data());
+            const transactions = snapshot.docs.map(doc => ({
+                ...doc.data(),
+                uid: doc.id
+            }));
             addTransactionToScreen(transactions);
         })
         .catch(error => {
@@ -42,10 +45,24 @@ function findTransactions(user)
 function addTransactionToScreen(transactions)
 {
     const orderedList = document.getElementById('transactions');
+    orderedList.innerHTML = "";
 
     transactions.forEach(transaction => { 
         const li = document.createElement('li');
         li.classList.add(transaction.type);
+        li.id = transaction.uid;
+        li.addEventListener('click', () => {
+            window.location.href = "../transaction/transaction.html?uid=" + transaction.uid;
+        })
+
+        const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = "Remover";
+        deleteButton.classList.add('outline', 'danger');
+        deleteButton.addEventListener('click', event => {
+            event.stopPropagation();
+            askRemoveTransaction(transaction);
+        })
+        li.appendChild(deleteButton);
 
         const date = document.createElement('p');
         date.innerHTML = formatDate(transaction.date);
@@ -72,6 +89,34 @@ function addTransactionToScreen(transactions)
     });
 }
 
+function askRemoveTransaction(transaction) 
+{
+    const shouldRemove = confirm('Deseja remover a transação?');
+    if (shouldRemove) 
+    {
+        removeTransaction(transaction);
+    }
+}
+
+function removeTransaction(transaction)
+{
+    showLoading();
+
+    firebase.firestore()
+        .collection("transactions")
+        .doc(transaction.uid)
+        .delete()
+        .then(() => {
+            hideLoading();
+            document.getElementById(transaction.uid).remove();
+        })
+        .catch(error => {
+            hideLoading();
+            console.log(error);
+            alert('Erro ao remover transação');
+        })
+}
+
 function formatMoney(money)
 {
     return `${money.currency} ${money.value.toFixed(2)}`
@@ -79,6 +124,11 @@ function formatMoney(money)
 
 function formatDate(date)
 {
-    return new Date(date).toLocaleDateString('pt-br');
+    const dateArray = date.split("-"); // ["2023", "10", "25"]
+    const year = dateArray[0];
+    const month = dateArray[1] - 1; // Ajuste para o índice do JS (0-11)
+    const day = dateArray[2];
+
+    return new Date(year, month, day).toLocaleDateString('pt-br');
 }
 

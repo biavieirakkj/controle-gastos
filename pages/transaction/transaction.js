@@ -1,10 +1,74 @@
-function logout()
+if (!isNewTransaction()) 
 {
-    firebase.auth().signOut().then(() => {
-        window.location.href = "../../index.html"
-    }).catch(() => {
-        alert('Erro ao fazer logout')
-    })
+    const uid = getTransactionUid();
+    findTransactionsByUid(uid);
+}
+
+function toggleSaveButtonDisable()
+{
+    form.saveButton().disabled = !isFormValid();
+}
+
+function fillTransactionScreen(transaction)
+{
+    if (transaction.type == "expense"){
+        form.typeExpense().checked = true;
+    } else {
+        form.typeIncome().checked = true;
+    }
+
+    form.date().value = transaction.date;
+    form.currency().value = transaction.money.currency;
+    form.value().value = transaction.money.value;
+    form.transactionType().value = transaction.transactionType;
+
+    if(transaction.description)
+    {
+        form.description().value = transaction.description;
+    }
+
+}
+
+function findTransactionsByUid(uid) 
+{
+    showLoading();
+
+    firebase.firestore()
+        .collection("transactions")
+        .doc(uid)
+        .get()
+        .then(doc => {
+            hideLoading();
+            if(doc.exists) 
+            {
+                fillTransactionScreen(doc.data());
+                toggleSaveButtonDisable();
+            }
+            else
+            {
+                alert("Documento não encontrado");
+                window.location.href = "../home/home.html";
+            }
+        })
+        .catch(() => {
+            hideLoading();
+            alert("Erro ao recuperar documento");
+            window.location.href = "../home/home.html";
+
+        });
+}
+
+getTransactionUid();
+
+function getTransactionUid()
+{
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('uid'); 
+}
+
+function isNewTransaction()
+{
+    return getTransactionUid() ? false : true;
 }
 
 function saveTransaction()
@@ -13,6 +77,15 @@ function saveTransaction()
 
     const transaction = createTransaction();
 
+    if (isNewTransaction()) {
+        save(transaction);
+    } else {
+        update (transaction);
+    }
+}
+
+function save(transaction) 
+{
     firebase.firestore()
         .collection('transactions')
         .add(transaction)
@@ -25,6 +98,23 @@ function saveTransaction()
             alert('Erro ao salvar transação');
         })
 }
+
+function update(transaction)
+{
+    showLoading();
+    firebase.firestore()
+        .collection("transactions")
+        .doc(getTransactionUid())
+        .update(transaction)
+        .then(() => {
+            hideLoading();
+            window.location.href = "../home/home.html";
+        })
+        .catch(() => {
+            hideLoading();
+            alert('Erro ao atualizar a transação')
+        })
+    }
 
 function createTransaction()
 {
@@ -79,11 +169,6 @@ function onChangeTransactionType()
     toggleSaveButtonDisable();
 }
 
-function toggleSaveButtonDisable()
-{
-    form.saveButton().disabled = !isFormValid();
-}
-
 function isFormValid()
 {
     const date = form.date().value;
@@ -107,9 +192,19 @@ function isFormValid()
     return true;
 }
 
+function logout()
+{
+    firebase.auth().signOut().then(() => {
+        window.location.href = "../../index.html"
+    }).catch(() => {
+        alert('Erro ao fazer logout')
+    })
+}
+
 const form = 
 {
     typeExpense: () => document.getElementById('expense'),
+    typeIncome: () => document.getElementById('income'),
     date: () => document.getElementById('date'),
     dateRequiredError: () => document.getElementById('date-required-error'),
     currency: () => document.getElementById('currency'),
