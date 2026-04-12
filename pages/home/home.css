@@ -24,9 +24,9 @@ ol {
 
 ol li {
     cursor: pointer;
-    background: rgb(241, 238, 239);
+    background: #fdf0d5ff;
     padding: 8px 16px;
-    border-bottom: 1px solid rgb(43, 37, 85);
+    border-bottom: 1px solid #003049ff;
 
 }
 
@@ -41,7 +41,7 @@ mudar a cor do item */
 }
 
 ol li.expense {
-    border-left: 10px solid maroon;
+    border-left: 10px solid #c1121fff;
 }
 
 ol li.income {

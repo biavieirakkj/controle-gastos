@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    background:rgb(169, 162, 204);
+    background: #669bbcff;
 }
 
 header{
@@ -19,38 +19,38 @@ header button{
 
 .clear{
     background-color: transparent;
-    color:ghostwhite;
+    color:#fdf0d5ff;
     border: none;
 }
 
 .solid{
-    background:ghostwhite;
-    color:rgb(43, 37, 85);
+    background: #fdf0d5ff;
+    color: #003049ff;
     border: none;
 }
 
 .outline{
     background: transparent;
-    color:ghostwhite;
-    border: 1px solid ghostwhite;
+    color: #fdf0d5ff;
+    border: 1px solid #fdf0d5ff;
 }
 
 .outline.danger 
 {
-    color: maroon;
-    border-color: maroon;
+    color: #780000ff;
+    border-color: #780000ff;
 }
 
 .error
 {
-    color: maroon;
+    color: #c1121fff;
     display: none;
 }
 
 .loading
 {
-    background: rgba(0, 0, 0, 0.5);
-    color:aliceblue;
+    background: rgb(0, 48, 73, 0.5);
+    color: #fdf0d5ff;
     position: fixed;
     width: 100%;
     height: 100%;
